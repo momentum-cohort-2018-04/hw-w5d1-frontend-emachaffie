@@ -48,10 +48,22 @@ export class Bank {
     if (money.currencyCode === currencyCode) {
       return new Money(money.getAmount(), currencyCode)
     } else {
-      var targetObject = this.rates.find(function (element) {
-        return money.currencyCode
+      var rateUsed = rates.find(function (rate) {
+        return currencyCode === rate.abbr
       })
-      var rateInDollars = targetObject.rateInUSD.value * money.getAmount()
+      //way to grab rate.inUSD of the same object....
+    }
+    
+    // if
+    //   (rates.includes(money.currencyCode == true) {
+    //     return 
+    //   }
+    //   var targetObject = function findCurrencyCodeObject (currencyCodeIn) {
+    //     return currencyCodeIn
+    //   }
+    //   // var targetObject = this.rates.indexOf('money.currencyCode')
+      console.log(targetObject)
+      var rateInDollars = targetObject.rateInUSD * money.getAmount()
       return new Money(rateInDollars, 'USD')
       // Get array index by abbr., multiply rate in USD by getAmount, return that number as amount, then 'USD'
       // Can't use findIndex and this, as findIndex returns index number... Can use one or the other...
